@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block head %}
+        <nav class="d-inline-flex mt-2 mt-md-0 ms-md-auto">
+            <a class="me-3 py-2 text-decoration-none" href="/add_provider">Добавить</a>
+        </nav>
+{% endblock %}
+
+{% block body %}
+<div class="pricing-header p-3 pb-md-4 mx-auto text-center">
+      <h1 class="display-4 fw-normal">Поставщики</h1>
+</div>
+<div class="pricing-header p-3 pb-md-4 mx-auto text-center">
+<table border="1" width="600">
+  <tr style="border:1px solid">
+    <th>id</th>
+    <th>Наименование</th>
+    <th>Дата начала сотрудничества</th>
+  </tr>
+      {% for row in data %}
+      <tr style="border:1px solid">
+         <td>{{ row.id }}</td>
+         <td>{{ row.name }}</td>
+         <td>{{ row.hire_date }}</td>
+         <td><a class="me-3 py-2 text-dark text-decoration-none" href="/delete_provider/{{ row.id }}">Удалить</a></td>
+         <td><a class="me-3 py-2 text-dark text-decoration-none" href="/update_provider/{{ row.id }}">Изменить</a></td>
+      </tr>
+      {% endfor %}
+</table>
+</div>
+{% endblock %}

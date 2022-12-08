@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block head %}{% endblock %}
+{% block body %}
+<div class="pricing-header p-3 pb-md-4 mx-auto text-center">
+      <h1 class="display-4 fw-normal">Поставщик</h1>
+      <form action="" method = "POST">
+        <div class="form-group row">
+            <label for="name">Название поставщика</label>
+            <input type="text" {% if provider.name %} value="{{ provider.name }}" {% endif %} class="form-control" name="name" id="name" required>
+        </div>
+        <div class="form-group row">
+            <label for="date">Дата начала сотрудничества</label>
+            <input type="date" {% if provider.hire_date %} value="{{ provider.hire_date.strftime('%Y-%m-%d') }}" {% endif %} class="form-control" name="date" id="date" required>
+        </div>
+        <button type="btnAdd" class="btn btn-primary">ОК</button>
+        <a href="/provider" class="btn btn-primary">Отмена</a>
+      </form>
+</div>
+{% endblock %}

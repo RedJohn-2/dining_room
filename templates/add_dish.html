@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+{% block head %}{% endblock %}
+{% block body %}
+<div class="pricing-header p-3 pb-md-4 mx-auto text-center">
+      <h1 class="display-4 fw-normal">Блюдо</h1>
+      <form action="" method = "POST">
+        <div class="form-group row">
+            <label for="name">Название блюда</label>
+            <input type="text" {% if dish.name %} value="{{ dish.name }}" {% endif %}  class="form-control" name="name" id="name" required>
+        </div>
+        <div class="form-group row">
+            <label for="price">Цена</label>
+            <p
+                id="price-hint"
+                class="input-hint">
+                С точностью до двух знаков, используя '.' в качестве разделителя. Например: <samp>170.35</samp>.
+             </p>
+            <input type="text" {% if dish.price %} value="{{ dish.price }}" {% endif %} pattern="\d+(\.\d{1,2})?" class="form-control" name="price" id="price" required>
+        </div>
+        <div class="form-group row">
+            <label for="calorific">Калорийность</label>
+            <p
+                id="calorific-hint"
+                class="input-hint">
+                С точностью до трех знаков, используя '.' в качестве разделителя. Например: <samp>140.135</samp>.
+             </p>
+            <input type="text" {% if dish.calorific %} value="{{ dish.calorific }}" {% endif %} pattern="\d+(\.\d{1,3})?" class="form-control" name="calorific" id="calorific" required>
+        </div>
+        <div class="form-group row">
+            <label for="amount">Количество</label>
+            <p
+                id="amount-hint"
+                class="input-hint">
+                Целочисленное значение.
+             </p>
+            <input type="text" {% if dish.amount %} value="{{ dish.amount }}" {% endif %} pattern="^[0-9]+$" class="form-control" name="amount" id="amount" required>
+        </div>
+        <div class="form-group row">
+            <label>Рецепт</label>
+            <textarea name="recipe">{% if dish.name %} {{ dish.recipe }} {% endif %}</textarea>
+        </div>
+        <button type="btnAdd" class="btn btn-primary">ОК</button>
+        <a href="/dish" class="btn btn-primary">Отмена</a>
+      </form>
+</div>
+{% endblock %}

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css">
+    <title>Столовая</title>
+</head>
+<body>
+    <div class="d-flex flex-column flex-md-row align-items-center pb-3 mb-4 border-bottom">
+        <a href="/" class="d-flex align-items-center text-dark text-decoration-none">
+            <span class="fs-4">Столовая</span>
+        </a>
+
+        <nav class="d-inline-flex mt-2 mt-md-0 ms-md-auto">
+            <a class="me-3 py-2 text-dark text-decoration-none" href="/">Главная страница</a>
+            <a class="me-3 py-2 text-dark text-decoration-none" href="/dish">Блюда</a>
+            <a class="me-3 py-2 text-dark text-decoration-none" href="/product">Продукты на складе</a>
+            <a class="me-3 py-2 text-dark text-decoration-none" href="/dish_product">Состав блюд</a>
+            <a class="me-3 py-2 text-dark text-decoration-none" href="/provider">Поставщики</a>
+        </nav>
+    </div>
+    <div class="d-flex flex-column flex-md-row align-items-center pb-3 mb-4 border-bottom">
+        {% block head %}{% endblock %}
+    </div>
+
+    {% block body %}{% endblock %}
+
+    <footer class="container pt-4 my-md-5 pt-md-5 border-top">
+    <div class="row">
+      <div class="col-12 col-md">
+        <img class="mb-2" src="/docs/5.2/assets/brand/bootstrap-logo.svg" alt="" width="24" height="19">
+        <small class="d-block mb-3 text-muted">&copy; 2017–2022</small>
+      </div>
+      <div class="col-6 col-md">
+        <h5>Главная страница</h5>
+        <ul class="list-unstyled text-small">
+          <li class="mb-1"><a class="link-secondary text-decoration-none" href="/">Главная страница</a></li>
+        </ul>
+      </div>
+      <div class="col-6 col-md">
+        <h5>Блюда</h5>
+        <ul class="list-unstyled text-small">
+          <li class="mb-1"><a class="link-secondary text-decoration-none" href="/dish">Список</a></li>
+          <li class="mb-1"><a class="link-secondary text-decoration-none" href="/add_dish">Добавление</a></li>
+          <li class="mb-1"><a class="link-secondary text-decoration-none" href="/dish/search">Поиск</a></li>
+        </ul>
+      </div>
+      <div class="col-6 col-md">
+        <h5>Продукты</h5>
+        <ul class="list-unstyled text-small">
+          <li class="mb-1"><a class="link-secondary text-decoration-none" href="/product">Список</a></li>
+          <li class="mb-1"><a class="link-secondary text-decoration-none" href="/add_product">Добавление</a></li>
+          <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Поиск</a></li>
+        </ul>
+      </div>
+       <div class="col-6 col-md">
+        <h5>Состав блюд</h5>
+        <ul class="list-unstyled text-small">
+          <li class="mb-1"><a class="link-secondary text-decoration-none" href="/dish_product">Список</a></li>
+          <li class="mb-1"><a class="link-secondary text-decoration-none" href="/add_dish_product">Добавление</a></li>
+          <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Поиск</a></li>
+        </ul>
+      </div>
+      <div class="col-6 col-md">
+        <h5>Поставщики</h5>
+        <ul class="list-unstyled text-small">
+          <li class="mb-1"><a class="link-secondary text-decoration-none" href="/provider">Список</a></li>
+          <li class="mb-1"><a class="link-secondary text-decoration-none" href="/add_provider">Добавление</a></li>
+          <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Поиск</a></li>
+        </ul>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
