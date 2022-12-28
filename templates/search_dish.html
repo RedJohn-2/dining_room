@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+{% block head %}{% endblock %}
+{% block body %}
+<div class="pricing-header p-3 pb-md-4 mx-auto text-center">
+      <h1 class="display-4 fw-normal">Поиск блюда</h1>
+      <form action="" method = "POST">
+        <div class="form-group row">
+            <label for="name">Название блюда</label>
+            <input type="text" class="form-control" name="name" id="name">
+        </div>
+        <div class="form-group row">
+            <label for="calorific_min">Калорийность</label>
+            <p
+                id="calorific-hint"
+                class="input-hint">
+                С точностью до трех знаков, используя '.' в качестве разделителя. Например: <samp>140.135</samp>.
+             </p>
+            От <input type="text" pattern="\d+(\.\d{1,3})?" class="form-control" name="calorific_min" id="calorific_min">
+            До <input type="text" pattern="\d+(\.\d{1,3})?" class="form-control" name="calorific_max" id="calorific_max">
+        </div>
+        <div class="form-group row">
+            <label for="price_min">Цена</label>
+            <p
+                id="price-hint"
+                class="input-hint">
+                С точностью до трех знаков, используя '.' в качестве разделителя. Например: <samp>140.13</samp>.
+             </p>
+            От <input type="text" pattern="\d+(\.\d{1,2})?" class="form-control" name="price_min" id="price_min">
+            До <input type="text" pattern="\d+(\.\d{1,2})?" class="form-control" name="price_max" id="price_max">
+        </div>
+        <div class="form-group row">
+            <label for="price_min">Количество</label>
+            <p
+                id="amount-hint"
+                class="input-hint">
+                Только целые числа. Например: <samp>14</samp>.
+             </p>
+            От <input type="text" pattern="^[0-9]+$" class="form-control" name="amount_min" id="amount_min">
+            До <input type="text" pattern="^[0-9]+$" class="form-control" name="amount_max" id="amount_max">
+        </div>
+
+        <button type="btnAdd" class="btn btn-primary">ОК</button>
+        <a href="/dish" class="btn btn-primary">Отмена</a>
+      </form>
+</div>
+{% endblock %}

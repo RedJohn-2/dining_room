@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block head %}
+        <nav class="d-inline-flex mt-2 mt-md-0 ms-md-auto">
+            <a class="me-3 py-2 text-decoration-none" href="/add_menu_dish">Добавить</a>
+            <a class="me-3 py-2 text-decoration-none" href="/search_menu_dish">Поиск</a>
+        </nav>
+{% endblock %}
+
+{% block body %}
+<div class="pricing-header p-3 pb-md-4 mx-auto text-center">
+      <h1 class="display-4 fw-normal">Блюда в меню</h1>
+</div>
+<div class="pricing-header p-3 pb-md-4 mx-auto text-center">
+<table border="1" width="auto" align="center">
+  <tr style="border:1px solid">
+    <th>Меню</th>
+    <th>Блюдо</th>
+    <th>Удаление</th>
+  </tr>
+      {% for row in data %}
+      <tr style="border:1px solid">
+         <td>{{ row.menu }}</td>
+         <td>{{ row.dish }}</td>
+         <td><a class="me-3 py-2 text-dark text-decoration-none" href="/delete_menu_dish/{{ row.id_menu }}/{{ row.id_dish }}">Удалить</a></td>
+      </tr>
+      {% endfor %}
+</table>
+</div>
+{% endblock %}

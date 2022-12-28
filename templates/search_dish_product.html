@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block head %}{% endblock %}
+{% block body %}
+<div class="pricing-header p-3 pb-md-4 mx-auto text-center">
+      <h1 class="display-4 fw-normal">Поиск ингредиентов в блюде</h1>
+      <form action="" method = "POST">
+        <div class="form-group row">
+            <label>Код блюда</label>
+            <select name="id_dish" size="1">
+                <option value="" selected></option>
+                {% for row in dish %}
+                <option value="{{ row.id }}">{{ row }}</option>
+                {% endfor %}
+           </select>
+        </div>
+
+        <div class="form-group row">
+            <label>Код продукта</label>
+            <select name="id_product" size="1">
+                <option value="" selected></option>
+                {% for row in product %}
+                <option value="{{ row.id }}">{{ row }}</option>
+                {% endfor %}
+           </select>
+        </div>
+        <button type="btnAdd" class="btn btn-primary">OK</button>
+        <a href="/dish_product" class="btn btn-primary">Отмена</a>
+      </form>
+</div>
+{% endblock %}

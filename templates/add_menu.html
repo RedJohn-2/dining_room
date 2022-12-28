@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block head %}{% endblock %}
+{% block body %}
+<div class="pricing-header p-3 pb-md-4 mx-auto text-center">
+      <h1 class="display-4 fw-normal">Меню</h1>
+      <form action="" method = "POST">
+        <div class="form-group row">
+            <label for="date">Дата</label>
+            <input type="date" {% if menu.date_of_operation %} value="{{ menu.date_of_operation.strftime('%Y-%m-%d') }}" {% endif %} class="form-control" name="date" id="date" required>
+        </div>
+        <button type="btnAdd" class="btn btn-primary">ОК</button>
+        <a href="/menu" class="btn btn-primary">Отмена</a>
+      </form>
+</div>
+{% endblock %}

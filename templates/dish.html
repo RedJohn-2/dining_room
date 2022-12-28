@@ -3,6 +3,8 @@
 {% block head %}
         <nav class="d-inline-flex mt-2 mt-md-0 ms-md-auto">
             <a class="me-3 py-2 text-decoration-none" href="/add_dish">Добавить</a>
+            <a class="me-3 py-2 text-decoration-none" href="/search_dish">Поиск</a>
+            <a class="me-3 py-2 text-decoration-none" href="/dish_sort">Отсортировать по названию</a>
         </nav>
 {% endblock %}
 
@@ -11,7 +13,7 @@
       <h1 class="display-4 fw-normal">Блюда</h1>
 </div>
 <div class="pricing-header p-3 pb-md-4 mx-auto text-center">
-<table style="border:1px solid" width="1000">
+<table style="border:1px solid" width="auto" align="center">
   <tr style="border:1px solid">
     <th>id</th>
     <th>Наименование</th>
@@ -26,8 +28,8 @@
       <tr style="border:1px solid">
          <td>{{ row.id }}</td>
          <td>{{ row.name }}</td>
-         <td>{{ row.calorific }}</td>
          <td>{{ row.price }}</td>
+         <td>{{ row.calorific }}</td>
          <td>{{ row.amount }}</td>
          <td><a class="me-3 py-2 text-dark text-decoration-none" href="/dish/{{ row.id }}">Рецепт</a></td>
          <td><a class="me-3 py-2 text-dark text-decoration-none" href="/delete_dish/{{ row.id }}">Удалить</a></td>

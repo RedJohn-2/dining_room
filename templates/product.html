@@ -3,6 +3,8 @@
 {% block head %}
         <nav class="d-inline-flex mt-2 mt-md-0 ms-md-auto">
             <a class="me-3 py-2 text-decoration-none" href="/add_product">Добавить</a>
+            <a class="me-3 py-2 text-decoration-none" href="/search_product">Поиск</a>
+            <a class="me-3 py-2 text-decoration-none" href="/product_sort/1">Отсортировать по названию</a>
         </nav>
 {% endblock %}
 
@@ -11,25 +13,50 @@
       <h1 class="display-4 fw-normal">Продукты</h1>
 </div>
 <div class="pricing-header p-3 pb-md-4 mx-auto text-center">
-<table border="1" width="600">
+<table border="1" width="auto" align="center">
   <tr style="border:1px solid">
     <th>id</th>
     <th>Наименование</th>
     <th>Количество</th>
-    <th>Код поставщика</th>
+    <th>Поставщик</th>
     <th>Удаление</th>
     <th>Изменение</th>
   </tr>
-      {% for row in data %}
+      {% for row in data.items %}
       <tr style="border:1px solid">
          <td>{{ row.id }}</td>
          <td>{{ row.name }}</td>
          <td>{{ row.amount }}</td>
-         <td>{{ row.provider }}</td>
+         <td>{{ row.provider if row.provider }}</td>
          <td><a class="me-3 py-2 text-dark text-decoration-none" href="/delete_product/{{ row.id }}">Удалить</a></td>
          <td><a class="me-3 py-2 text-dark text-decoration-none" href="/update_product/{{ row.id }}">Изменить</a></td>
       </tr>
       {% endfor %}
 </table>
+<br>
+    <div class="text-center">
+    <ul class="pagination justify-content-center">
+  {% if data.has_prev %}
+   <li style="display:inline" class="page-item"><a class="page-link" href="{{ url_for(link, page_num=data.prev_num) }}">Previous</a></li>
+  {% else %}
+   <li style="display:inline" class="page-item disabled"><span class="page-link">Previous</span>
+  {% endif %}
+   </li>
+
+  {% for page in data.iter_pages(left_edge=3, right_edge=3) %}
+  {% if page %}
+   <li style="display:inline" class="page-item"><a class="page-link" href="{{ url_for(link, page_num=page) }}">{{ page }}</a></li>
+  {% else %}
+   <li style="display:inline" class="page-item disabled" id="example_ellipsis"><a href="#" class="page-link">…</a></li>
+  {% endif %}
+  {% endfor %}
+
+  {% if data.has_next %}
+   <li style="display:inline" class="page-item"><a class="page-link" href="{{ url_for(link, page_num=data.next_num) }}">Next</a></li>
+  {% else %}
+   <li style="display:inline" class="page-item disabled"><span class="page-link">Next</span>
+  {% endif %}
+   </ul>
+    </div>
 </div>
 {% endblock %}

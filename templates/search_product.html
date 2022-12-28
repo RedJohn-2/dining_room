@@ -3,30 +3,33 @@
 {% block head %}{% endblock %}
 {% block body %}
 <div class="pricing-header p-3 pb-md-4 mx-auto text-center">
-      <h1 class="display-4 fw-normal">Продукт на складе</h1>
+      <h1 class="display-4 fw-normal">Поиск продуктов</h1>
       <form action="" method = "POST">
         <div class="form-group row">
             <label for="name">Название продукта</label>
-            <input type="text" {% if product.name %} value="{{ product.name }}" {% endif %} class="form-control" name="name" id="name" required>
+            <input type="text" class="form-control" name="name" id="name">
         </div>
         <div class="form-group row">
-            <label for="amount">Количество</label>
+            <label for="amount_min">Количество</label>
             <p
                 id="amount-hint"
                 class="input-hint">
-                С точностью до трех знаков, используя '.' в качестве разделителя. Например: <samp>2.705</samp>.
+                С точностью до трех знаков, используя '.' в качестве разделителя. Например: <samp>140.13</samp>.
              </p>
-            <input type="text" pattern="\d+(\.\d{1,3})?" {% if product.amount %} value="{{ product.amount }}" {% endif %} class="form-control" name="amount" id="amount" required>
+            От <input type="text" pattern="\d+(\.\d{1,2})?" class="form-control" name="amount_min" id="amount_min">
+            До <input type="text" pattern="\d+(\.\d{1,2})?" class="form-control" name="amount_max" id="amount_max">
         </div>
         <div class="form-group row">
             <label>Код поставщика</label>
             <select name="id_provider" size="1">
+                <option value="-1" selected></option>
+                <option value="0">Без поставщика</option>
                 {% for row in provider %}
-                <option value="{{ row.id }}" {% if row == product.provider %} selected {% endif %}>{{ row }}</option>
+                <option value="{{ row.id }}">{{ row }}</option>
                 {% endfor %}
-                <option value="0" {% if not product.provider %} selected {% endif %}>Null</option>
            </select>
         </div>
+
         <button type="btnAdd" class="btn btn-primary">ОК</button>
         <a href="/product/1" class="btn btn-primary">Отмена</a>
       </form>
